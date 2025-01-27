@@ -1,0 +1,53 @@
+ <div class="image-uploader">
+  <input type="file" (change)="onFileChange($event)" />
+
+
+
+  <!-- For Load image from assets folder
+    [imageBase64]="imageBase64" -->
+
+  <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="false"
+    [resizeToWidth]="500"
+    [aspectRatio]="4 / 3"
+    [roundCropper]="false"
+    [transform]="transform"
+    format="png"
+    (imageCropped)="onImageCropped($event)"
+    (cropperReady)="onCropperReady()"
+    (imageLoaded)="onImageLoaded()"
+    (loadImageFailed)="onImageLoadFailed()">
+  </image-cropper>
+
+  <div class="controls">
+    <button (click)="moveLeft()">Move Left</button>
+    <button (click)="moveRight()">Move Right</button>
+    <button (click)="moveUp()">Move Up</button>
+    <button (click)="moveDown()">Move Down</button>
+    <button (click)="zoomIn()">Zoom In</button>
+    <button (click)="zoomOut()">Zoom Out</button>
+  </div>
+
+
+
+</div>
+
+<div>
+  <button (click)="uploadCroppedImage()">Crop</button>
+  <img [src]="croppedImage" />
+</div>
+
+
+
+
+
+
+
+
+
+ <!-- <image-cropper
+  [imageBase64]="imageBase64"
+  (imageCropped)="onImageCropped($event)">
+</image-cropper>
+<button (click)="saveCroppedImage()">Save Cropped Image</button> -->
